@@ -8,3 +8,12 @@ Inspired by http://www.indiangeek.net/wp-content/uploads/Programmer%20competency
 
 The idea behind the project is to help people track theirs studies about software skills.
 
+
+
+Running locally
+===============
+
+$ cap gen
+$ cap localserver
+
+Open your browser at http://localhost:8000 and check it out.

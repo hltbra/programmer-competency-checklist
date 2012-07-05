@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+    <head>
+
+        <meta charset="utf-8" />
+        <title>Programmer Competency Matrix</title>
+
+        <style type="text/css">
+
+            table                              { border-collapse: collapse; }
+            td                                 { border: solid #888; border-width: 0 1px 0 0; font-family: candara, sans-serif; font-weight: bold; background-color: white; padding: 0.75em 1.2em; position: relative; }
+            td+td                              { border-width: 1px; font-weight: normal; background-color: #ddd; }
+            td+td+td+td+td+td                  { border-width: 0 0 0 1px; font-size: 75%; color: #79b; background-color: white; }
+            th                                 { font-family: candara, sans-serif; text-align: justify; padding-top: 2em; font-size: 200%; }
+            .headers td+td                     { background-color: #bbb; padding: 0.3em 0.5em; }
+            .headers td+td+td+td+td+td         { background-color: #eee; font-size: 100%; color: black; }
+            .explain                           { color: #68a; }
+
+            .skill .status                     { color: #008500; position: relative; right: -15px;}
+            .skill .status:hover               { color: #39E639; cursor: pointer;}
+            .skill .status-bar                 { text-align: right; }
+
+            /*      table tr.q:hover td                { background-color: #ff9; }
+            table tr.q:hover td+td             { background-color: #ffd; }
+            table tr.q:hover td+td+td+td+td+td { background-color: white; }
+            */
+        </style>
+
+    </head>
+
+
+    <body>
+
+        <h1>Programmer Competency Matrix</h1>
+
+        <blockquote> Note that the knowledge for each level is cumulative; being at
+            level <em>n</em> implies that you also know everything from the
+            levels lower than <em>n</em>. </blockquote>
+
+          <table>
+            <% big_areas.each do |big_area| %>
+              <tr>
+                <th colspan="5"><%= big_area.title %></th>
+              </tr>
+              <tr class="headers">
+                <td>&nbsp;</td>
+                <td>2<sup>n</sup> <span class="explain">(Level 0)</span></td>
+                <td>n<sup>2</sup> <span class="explain">(Level 1)</span></td>
+                <td>n <span class="explain">(Level 2)</span></td>
+                <td>log(n) <span class="explain">(Level 3)</span></td>
+              </tr>
+
+              <% big_area.each do |area| %>
+                <tr class="q">
+                  <td><%= area.title %></td>
+                  <% area.each do |entry| %>
+                    <td class="skill">
+                      <div class="status-bar"><a title="I know it" label="I know it" class="status">✔</a></div>
+                      <div><%= entry %></div>
+                    </td>
+                  <% end %>
+                </tr>
+
+              <% end %>
+            <% end %>
+          </table>
+
+    </body>
+</html>

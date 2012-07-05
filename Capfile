@@ -7,3 +7,7 @@ task :gen do
     f << ERB.new(content).result(config)
   end
 end
+
+task :localserver do
+  `python -m SimpleHTTPServer 8080`
+end

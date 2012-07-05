@@ -13,7 +13,7 @@ The idea behind the project is to help people track theirs software skills studi
 Running locally
 ===============
 
-$ cap gen
-$ cap localserver
+    $ cap gen
+    $ cap localserver
 
 Open your browser at http://localhost:8000 and check it out.

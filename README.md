@@ -1,5 +1,5 @@
-Programmer Competency Matrix Checklist
-======================================
+Programmer Competency Checklist
+===============================
 
 Inspired by http://www.indiangeek.net/wp-content/uploads/Programmer%20competency%20matrix.htm
 

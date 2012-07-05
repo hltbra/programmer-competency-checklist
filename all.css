@@ -21,3 +21,6 @@ th                                 { font-family: candara, sans-serif; text-alig
 .skill.dont-know .uncheck { display: none; }
 .skill.know .check     { display: none; }
 .skill.know  { background-color: green; }
+
+.staff-msg { color: red; font-size: 14px; }
+.info { font-size: 18px; }

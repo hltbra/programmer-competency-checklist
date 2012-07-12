@@ -58,8 +58,7 @@
                       <% skill_hash = (big_area.title + area.title + entry).hash %>
                       <td class="skill dont-know" id="skill-<%= skill_hash %>">
                         <div class="status-bar">
-                          <a title="I know it" label="I know it" class="check">✔</a>
-                          <a title="I don't know it" label="I don't know it" class="uncheck">✘</a>
+                          <input title="Check if you know it" type="checkbox" class="check" />
                         </div>
                         <div><%= entry %></div>
                       </td>

@@ -1,33 +1,33 @@
 $(function() {
-  var markAsKnown = function(skill) {
-      skill.removeClass("dont-know").addClass("know");
+  var markAsKnown = function(skill, skillId) {
+      localStorage.setItem(skillId, "check");
+      skill.find("input").prop("checked", true);
   };
 
-  var markAsUnknown = function(skill) {
-      skill.removeClass("know").addClass("dont-know");
+  var markAsUnknown = function(skill, skillId) {
+      localStorage.setItem(skillId, "uncheck");
+      skill.find("input").prop("checked", false);
   };
 
   var updateSkillsFromLocalStorage = function() {
     $(".skill").each(function(index, elem) {
-      var value = localStorage.getItem($(elem).attr("id"));
-      if (value == "check") {
-        markAsKnown($(elem));
+      var skillId = $(elem).attr("id");
+      var value = localStorage.getItem(skillId);
+      if (value === "check") {
+        markAsKnown($(elem), skillId);
       }
     });
   };
 
   var bindClicks = function() {
-    $(".status-bar").on("click", ".uncheck", function() {
-      var skill = $(this).parent().parent();
-      var skill_id = skill.attr("id");
-      localStorage.setItem(skill_id, "uncheck");
-      markAsUnknown(skill);
-    });
-    $(".status-bar").on("click", ".check", function() {
-      var skill = $(this).parent().parent();
-      var skill_id = skill.attr("id");
-      localStorage.setItem(skill_id, "check");
-      markAsKnown(skill);
+    $("input.check").change(function() {
+        var skill = $(this).parent().parent();
+        var skillId = skill.attr("id");
+        if ($(this).val() === "on") {
+            markAsUnknown(skill, skillId);
+        } else {
+            markAsKnown(skill, skillId);
+        }
     });
   };
 

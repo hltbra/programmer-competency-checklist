@@ -52,8 +52,8 @@
                 </tr>
 
                 <% big_area.each do |area| %>
-                  <tr class="q">
-                    <td><%= area.title %></td>
+                  <tr>
+                    <td class="subarea-title"><%= area.title %></td>
                     <% area.each do |entry| %>
                       <% skill_hash = (big_area.title + area.title + entry).hash %>
                       <td class="skill dont-know" id="skill-<%= skill_hash %>">

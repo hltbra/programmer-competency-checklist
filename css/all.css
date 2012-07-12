@@ -118,6 +118,10 @@ td.skill {
     margin-top: 30px;
 }
 
+#programmer-checklist li {
+    font-size: 15px;
+}
+
 body {
     margin-top: 30px;
 }
@@ -129,4 +133,7 @@ h1 {
 .tab-content table {
     table-layout: fixed;
     width: 100%;
+}
+.subarea-title {
+    font-size: 16px;
 }

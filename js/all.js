@@ -23,10 +23,10 @@ $(function() {
     $("input.check").change(function() {
         var skill = $(this).parent().parent();
         var skillId = skill.attr("id");
-        if ($(this).val() === "on") {
-            markAsUnknown(skill, skillId);
-        } else {
+        if ($(this).prop("checked")) {
             markAsKnown(skill, skillId);
+        } else {
+            markAsUnknown(skill, skillId);
         }
     });
   };

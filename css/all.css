@@ -47,6 +47,7 @@ th {
 
 td.skill {
     font-size: 14px;
+    vertical-align: top;
 }
 
 .explain {

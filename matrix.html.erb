@@ -5,9 +5,9 @@
         <meta charset="utf-8" />
         <title>Programmer Competency Matrix Checklist</title>
 
+        <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" />
         <link type="text/css" rel="stylesheet" href="/all.css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-        <script src="/all.js"></script>
 
         <script type="text/javascript">
           var _gaq = _gaq || [];
@@ -24,51 +24,59 @@
 
 
     <body>
+      <div class="container">
 
         <h1>Programmer Competency Matrix Checklist</h1>
 
+        <p class="staff-msg">This checklist is stored in your browser localstorage at the moment. Soon we will
+        have login and your checklist storaged in the cloud.</p>
 
-        <p class="info">Note that the knowledge for each level is cumulative; being at
-            level <em>n</em> implies that you also know everything from the
-            levels lower than <em>n</em>. </p>
+        <ul id="programmer-checklist" class="nav nav-tabs">
+          <% big_areas.reverse.each_with_index do |big_area, i| %>
+            <li class="<%= (i == big_areas.size - 1) ? 'active': '' %>">
+              <a href="#<%= big_area.object_id %>" data-toggle="tab"><%= big_area.title %></a>
+            </li>
+          <% end %>
+        </ul>
 
-        <p class="staff-msg">(This checklist is stored in your browser localstorage at the moment. Soon we will
-        have login and your checklist storaged in the cloud.)</p>
-
-          <table>
-            <% big_areas.each do |big_area| %>
-              <tr>
-                <th colspan="5"><%= big_area.title %></th>
-              </tr>
-              <tr class="headers">
-                <td>&nbsp;</td>
-                <td>2<sup>n</sup> <span class="explain">(Level 0)</span></td>
-                <td>n<sup>2</sup> <span class="explain">(Level 1)</span></td>
-                <td>n <span class="explain">(Level 2)</span></td>
-                <td>log(n) <span class="explain">(Level 3)</span></td>
-              </tr>
-
-              <% big_area.each do |area| %>
-                <tr class="q">
-                  <td><%= area.title %></td>
-                  <% area.each do |entry| %>
-                    <% skill_hash = (big_area.title + area.title + entry).hash %>
-                    <td class="skill dont-know" id="skill-<%= skill_hash %>">
-                      <div class="status-bar">
-                        <a title="I know it" label="I know it" class="check">✔</a>
-                        <a title="I don't know it" label="I don't know it" class="uncheck">✘</a>
-                      </div>
-                      <div><%= entry %></div>
-                    </td>
-                  <% end %>
+        <div class="tab-content">
+          <% big_areas.reverse.each_with_index do |big_area, i| %>
+            <div id="<%= big_area.object_id %>" class="tab-pane <%= (i == big_areas.size - 1) ? 'active' : ''%>">
+              <table>
+                <tr class="headers">
+                  <td>&nbsp;</td>
+                  <td>2<sup>n</sup> <span class="explain">(Level 0)</span></td>
+                  <td>n<sup>2</sup> <span class="explain">(Level 1)</span></td>
+                  <td>n <span class="explain">(Level 2)</span></td>
+                  <td>log(n) <span class="explain">(Level 3)</span></td>
                 </tr>
 
-              <% end %>
-            <% end %>
-          </table>
+                <% big_area.each do |area| %>
+                  <tr class="q">
+                    <td><%= area.title %></td>
+                    <% area.each do |entry| %>
+                      <% skill_hash = (big_area.title + area.title + entry).hash %>
+                      <td class="skill dont-know" id="skill-<%= skill_hash %>">
+                        <div class="status-bar">
+                          <a title="I know it" label="I know it" class="check">✔</a>
+                          <a title="I don't know it" label="I don't know it" class="uncheck">✘</a>
+                        </div>
+                        <div><%= entry %></div>
+                      </td>
+                    <% end %>
+                  </tr>
+                <% end %>
+              </table>
+            </div>
+          <% end %>
+        </div>
 
-    <p>This page is inspired by <a href="http://www.indiangeek.net/wp-content/uploads/Programmer%20competency%20matrix.htm">Programmer Competency Matrix (indiangeek): http://www.indiangeek.net/wp-content/uploads/Programmer%20competency%20matrix.htm</a></p>
-
-    <p>Check out the source code at Github: <a href="https://github.com/hltbra/programmer-competency-checklist">https://github.com/hltbra/programmer-competency-checklist</a></p>
+      <div id="references">
+        <p>This page is inspired by <a href="http://www.indiangeek.net/wp-content/uploads/Programmer%20competency%20matrix.htm">Programmer Competency Matrix (indiangeek)</a></p>
+        <p>Check out the source code at Github: <a href="https://github.com/hltbra/programmer-competency-checklist">https://github.com/hltbra/programmer-competency-checklist</a></p>
+      </div>
+      <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+      <script src="/all.js"></script>
+    </div>
     </body>
 </html>

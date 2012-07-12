@@ -1,26 +1,126 @@
-table                              { border-collapse: collapse; }
-td                                 { border: solid #888; border-width: 0 1px 0 0; font-family: candara, sans-serif; font-weight: bold; background-color: white; padding: 0.75em 1.2em; position: relative; }
-td+td                              { border-width: 1px; font-weight: normal; background-color: #ddd; }
-td+td+td+td+td+td                  { border-width: 0 0 0 1px; font-size: 75%; color: #79b; background-color: white; }
-th                                 { font-family: candara, sans-serif; text-align: justify; padding-top: 2em; font-size: 200%; }
-.headers td+td                     { background-color: #bbb; padding: 0.3em 0.5em; }
-.headers td+td+td+td+td+td         { background-color: #eee; font-size: 100%; color: black; }
-.explain                           { color: #68a; }
+table {
+    border-collapse: collapse;
+}
 
-.skill .status-bar                 { text-align: right; }
+td {
+    border: solid #888;
+    border-width: 0 1px 0 0;
+    font-family: candara, sans-serif;
+    font-weight: bold;
+    background-color: white;
+    padding: 0.75em 1.2em;
+    position: relative;
+}
+
+td+td {
+    border-width: 1px;
+    font-weight: normal;
+    background-color: #ddd;
+}
+
+td+td+td+td+td+td {
+    border-width: 0 0 0 1px;
+    font-size: 75%;
+    color: #79b;
+    background-color: white;
+}
+
+th {
+    font-family: candara, sans-serif;
+    text-align: justify;
+    padding-top: 2em;
+    font-size: 200%;
+}
+
+.headers td+td {
+    background-color: #bbb;
+    padding: 0.3em 0.5em;
+}
+
+.headers td+td+td+td+td+td {
+    background-color: #eee;
+    font-size: 100%;
+    color: black;
+}
+
+.explain {
+    color: #68a;
+}
+
+.skill .status-bar {
+    text-align: right;
+}
+
 .skill .status-bar .check,
-.skill .status-bar .uncheck        { position: relative; right: -15px;  }
-.skill .status-bar .check          { color: #008500; }
-.skill .status-bar .check:hover    { color: #39E639; }
-.skill .status-bar .uncheck        { color: red; }
-.skill .status-bar .uncheck:hover    { color: red; }
+.skill .status-bar .uncheck {
+    position: relative;
+    right: -15px;
+}
+
+.skill .status-bar .check {
+    color: #008500;
+}
+
+.skill .status-bar .check:hover {
+    color: #39E639;
+}
+
+.skill .status-bar .uncheck {
+    color: red;
+}
+
+.skill .status-bar .uncheck:hover {
+    color: red;
+}
 
 .skill .status-bar .check:hover,
-.skill .status-bar .uncheck:hover  { cursor: pointer;}
+.skill .status-bar .uncheck:hover  {
+    cursor: pointer;
+}
 
-.skill.dont-know .uncheck { display: none; }
-.skill.know .check     { display: none; }
-.skill.know  { background-color: green; }
+.skill.dont-know .uncheck {
+    display: none;
+}
 
-.staff-msg { color: red; font-size: 14px; }
-.info { font-size: 18px; }
+.skill.know .check {
+    display: none;
+}
+
+.skill.know  {
+    background-color: green;
+}
+
+.staff-msg {
+    color: red;
+    font-size: 14px;
+}
+
+.info {
+    font-size: 18px;
+}
+
+#programmer-checklist.nav-tabs > li {
+    float: right;
+}
+
+#references {
+    text-align: center;
+    margin-top: 60px;
+}
+
+#programmer-checklist {
+    margin-top: 30px;
+}
+
+body {
+    margin-top: 30px;
+}
+
+h1 {
+    margin-bottom: 15px;
+}
+
+.tab-content table {
+    table-layout: fixed;
+    width: 100%;
+}

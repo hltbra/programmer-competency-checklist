@@ -25,7 +25,7 @@ def config
   ])
 
 
-  systems_programming = Entry.new("systems_programming", [
+  systems_programming = Entry.new("systems programming", [
     %q{Doesn't know what a compiler, linker or interpreter is },
     %q{Basic understanding of compilers, linker and interpreters. Understands what assembly code is and how things work at the hardware level. Some knowledge of virtual memory and paging. },
     %q{Understands kernel mode vs. user mode, multi-threading, synchronization primitives and how they're implemented, able to read assembly code. Understands how networks work, understanding of network protocols and socket level programming.},

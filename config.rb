@@ -174,7 +174,7 @@ def config
 
 
 
-  languages = Entry.new("database", [
+  languages = Entry.new("languages with professional experience", [
     %q{Imperative or Object Oriented},
     %q{Imperative, Object-Oriented and declarative (SQL), added bonus if they
     understand static vs dynamic typing, weak vs strong typing and static inferred

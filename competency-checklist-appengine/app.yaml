@@ -2,7 +2,7 @@ application: competency-checklist
 version: 1
 runtime: python27
 api_version: 1
-threadsafe: yes
+threadsafe: true
 
 handlers:
 - url: /favicon\.ico
@@ -15,6 +15,10 @@ handlers:
 - url: /js
   static_dir: js
 
-- url: /
-  static_files: index.html
-  upload: index\.html
+- url: /.*
+  script: loggedin.app
+
+
+libraries:
+- name: jinja2
+  version: latest

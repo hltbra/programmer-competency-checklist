@@ -1,1 +1,110 @@
-../index.html
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8" />
+        <title>Programmer Competency Matrix Checklist</title>
+
+        <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" />
+        <link type="text/css" rel="stylesheet" href="/css/all.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+        <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-33170342-1']);
+          _gaq.push(['_trackPageview']);
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+        </script>
+
+    </head>
+
+
+    <body>
+      <div class="container">
+
+        <h1>Programmer Competency Matrix Checklist</h1>
+        {% if user_is_loggedin %}
+          <div class="greetings">
+            <span class="user">{{ name }}</span>
+            <a href="{{ logout_url}}" class="logout">logout</a>
+          </div>
+        {% else %}
+          <div class="greetings">
+            <a href="{{ login_url}}" class="login">login</a>
+          </div>
+          <p class="staff-msg">This checklist is stored in your browser localstorage while you are not logged in.</p>
+        {% endif %}
+        
+
+        {% set big_areas = reverse(big_areas) %}
+        <ul id="programmer-checklist" class="nav nav-tabs">
+          {% for (i, big_area) in enumerate(big_areas) %}
+            {% set big_area_title = big_area[0] %}
+            <li class="{{ (i == len(big_areas) - 1) and 'active' or '' }}">
+              <a href="#{{ slugify(big_area_title) }}" data-toggle="tab">{{ big_area_title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+
+        <form method="POST" action="/save">
+          <div class="tab-content">
+            {% for (i, big_area) in enumerate(big_areas) %}
+              {% set big_area_title = big_area[0] %}
+              {% set areas = big_area[1] %}
+              <div id="{{ slugify(big_area_title) }}" class="tab-pane {{ (i == len(big_areas) - 1) and 'active' or ''}}">
+                <table>
+                  <tr class="headers">
+                    <td>&nbsp;</td>
+                    <td>2<sup>n</sup> <span class="explain">(Level 0)</span></td>
+                    <td>n<sup>2</sup> <span class="explain">(Level 1)</span></td>
+                    <td>n <span class="explain">(Level 2)</span></td>
+                    <td>log(n) <span class="explain">(Level 3)</span></td>
+                  </tr>
+
+                  {% for area in areas %}
+                    {% set area_title = area[0] %}
+                    {% set skills = area[1] %}
+                    <tr>
+                      <td class="subarea-title">{{ area_title }}</td>
+                      {% for skill in skills %}
+                        {% set skill_id = slugify(area_title + skill) %}
+                        <td class="skill dont-know" id="{{ skill_id }}">
+                          <div class="status-bar">
+                            {% if skill_id in user_skills %}
+                              <input title="Check if you know it" name="{{ skill_id }}" type="checkbox" class="check" checked="checked"/>
+                            {% else %}
+                              <input title="Check if you know it" name="{{ skill_id }}" type="checkbox" class="check" />
+                            {% endif %}
+                          </div>
+                          <div>{{ skill }}</div>
+                        </td>
+                      {% endfor %}
+                    </tr>
+                  {% endfor %}
+                </table>
+              </div>
+            {% endfor %}
+          </div>
+          {% if user_is_loggedin %}
+            <input type="submit" class="btn-save btn btn-success pull-right" value="Save" />
+          {% endif %}
+        </form>
+
+        <div id="references">
+          <p>This page is inspired by <a href="http://www.indiangeek.net/wp-content/uploads/Programmer%20competency%20matrix.htm">Programmer Competency Matrix (indiangeek)</a></p>
+          <p>Check out the source code at Github: <a href="https://github.com/hltbra/programmer-competency-checklist">https://github.com/hltbra/programmer-competency-checklist</a></p>
+        </div>
+        <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+        <script src="/js/all.js"></script>
+        {% if user_is_loggedin %}
+          <script>emptyLocalStorage()</script>
+        {% else %}
+          <script>useLocalStorage()</script>
+        {% endif %}
+      </div>
+    </body>
+</html>

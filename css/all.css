@@ -1,3 +1,7 @@
+h1 {
+  float: left;
+}
+
 table {
     border-collapse: collapse;
 }
@@ -137,4 +141,24 @@ h1 {
 }
 .subarea-title {
     font-size: 16px;
+}
+
+.btn-save {
+  margin-top: 20px;
+}
+
+.greetings {
+  width: 100%;
+  text-align: right;
+  margin-bottom: 30px;
+  line-height: 36px;
+}
+
+.greetings .user {
+  padding-right: 10px;
+  border-right: 1px solid #ccc;
+}
+
+.greetings .logout {
+  padding-left: 10px;
 }

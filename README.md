@@ -1,6 +1,8 @@
 Programmer Competency Checklist
 ===============================
 
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/hltbra/programmer-competency-checklist/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
 http://competency-checklist.appspot.com/
 
 
